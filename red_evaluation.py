@@ -33,7 +33,7 @@ if __name__ == "__main__":
     # Load scenario
     path = str(inspect.getfile(CybORG))
     path = path[:-10] + f'/Shared/Scenarios/{scenario}.yaml'
-    # Load Red agent
+    
 
     # Load blue agent
     blue_agent = lambda: WrappedBlueAgent(MainAgent())
@@ -47,7 +47,7 @@ if __name__ == "__main__":
         observation = env.reset()
 
         # action_space = wrapped_cyborg.get_action_space(agent_name)
-        action_space = cyborg.get_action_space(agent_name)
+        action_space = env.get_action_space(agent_name)
         total_reward = []
         actions = []
         for i in range(MAX_EPS):
@@ -55,12 +55,11 @@ if __name__ == "__main__":
             a = []
             # cyborg.env.env.tracker.render()
             for j in range(num_steps):
-                action = 1 # TODO: get action from red agent
+                action = random.randint(0, action_space - 1) # TODO: get action from red agent
                 observation, rew, done, info = env.step(action)
                 # result = cyborg.step(agent_name, action)
                 r.append(rew)
                 a.append((str(cyborg.get_last_action('Blue')), str(cyborg.get_last_action('Red'))))
-                print( str(cyborg.get_last_action('Red')) )
             total_reward.append(sum(r))
             actions.append(a)
             observation = env.reset()

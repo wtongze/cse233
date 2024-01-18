@@ -47,9 +47,10 @@ if __name__ == "__main__":
     for i_episode in range(1, max_episodes + 1):
         state = env.reset()
         time_step = 0
+        action_space = env.action_space('Red')
         for t in range(max_timesteps):
             time_step += 1
-            action = 1 # TODO implement red agent
+            action =  random.randint(0, action_space - 1)
             state, reward, done, _ = env.step(action)
             # TODO: implement red agent training
 
