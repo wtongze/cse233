@@ -32,8 +32,8 @@ if __name__ == "__main__":
     # Load scenario
     path = str(inspect.getfile(CybORG))
     path = path[:-10] + f'/Shared/Scenarios/{scenario}.yaml'
-    # Load Red agent
-    red_agent = RedMeanderAgent()
+    # TODO: Load Red agent
+    
     # Load blue agent
     blue_agent = WrappedBlueAgent
     # Set up environment with blue agent running in the background and 
