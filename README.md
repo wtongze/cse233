@@ -6,7 +6,7 @@ The project uses the simulator [CybORG](https://github.com/cage-challenge/cage-c
 
 The Cyborg Simulator and pytorch
 
-## 
+## Project
 
 The objective is each group gets a red agent that maximizes the reward using reinforcement learning.
 
