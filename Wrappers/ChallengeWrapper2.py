@@ -35,7 +35,7 @@ class ChallengeWrapper2(Env, BaseWrapper):
         if self.max_steps is not None and self.step_counter >= self.max_steps:
             done = True
 
-        return obs, reward, done, info
+        return obs, -reward, done, info
 
     def reset(self):
         self.step_counter = 0

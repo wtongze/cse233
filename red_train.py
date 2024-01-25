@@ -11,6 +11,7 @@ from CybORG.Agents.SimpleAgents.Meander import RedMeanderAgent
 from Wrappers.ChallengeWrapper2 import ChallengeWrapper2
 from Agents.MainAgent import MainAgent
 from Agents.WrappedAgent import WrappedBlueAgent
+from Agents.RedAgent import RedAgent
 import random
 
 MAX_EPS = 100
@@ -25,20 +26,16 @@ def wrap(env):
 if __name__ == "__main__":
     cyborg_version = CYBORG_VERSION
     scenario = 'Scenario2'
-    # commit_hash = get_git_revision_hash()
     
 
     
     # Load scenario
     path = str(inspect.getfile(CybORG))
     path = path[:-10] + f'/Shared/Scenarios/{scenario}.yaml'
-    '''
-    CSE233 Project: Load red agent here
-    red_agent = ...
-    '''
 
     # Load blue agent
     blue_agent = WrappedBlueAgent
+    red_agent = RedAgent()
     # Set up environment with blue agent running in the background and 
     # red agent as the main agent
     cyborg = CybORG(path, 'sim', agents={'Blue': blue_agent})
@@ -47,17 +44,17 @@ if __name__ == "__main__":
     max_episodes = 1
     max_timesteps = 1
     for i_episode in range(1, max_episodes + 1):
-        state = env.reset()
+        observation = env.reset()
         time_step = 0
-        action_space = env.action_space('Red')
+        action_space = env.get_action_space('Red')
         for t in range(max_timesteps):
             time_step += 1
-            action =  random.randint(0, action_space - 1) # CSE233 Project: get action from red agent
-            state, reward, done, _ = env.step(action)
+            action =  red_agent.get_action(observation, action_space) 
+            observation, reward, done, _ = env.step(action)
 
             '''
-            CSE233 Project: Implement red agent training here
-            red_agent.train(..., ..., ...)
+            CSE233 Project: Here you should call red agent training function 
             '''
-
+            # red_agent.train(...) # CSE233 Project: uncoment when you implement red agent training
             
+

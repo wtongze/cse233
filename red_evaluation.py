@@ -12,9 +12,10 @@ from CybORG.Agents.SimpleAgents.Meander import RedMeanderAgent
 from Wrappers.ChallengeWrapper2 import ChallengeWrapper2
 from Agents.WrappedAgent import WrappedBlueAgent
 from Agents.MainAgent import MainAgent
+from Agents.RedAgent import RedAgent
 import random
 
-MAX_EPS = 100
+MAX_EPS = 1
 agent_name = 'Red'
 random.seed(153)
 
@@ -36,15 +37,13 @@ if __name__ == "__main__":
     
 
     # Load blue agent
-    blue_agent = lambda: WrappedBlueAgent(MainAgent())
+    blue_agent = WrappedBlueAgent
+    red_agent = RedAgent()
     # Set up environment with blue agent running in the background and 
     # red agent as the main agent
     cyborg = CybORG(path, 'sim', agents={'Blue': blue_agent})
     env = ChallengeWrapper2(env=cyborg, agent_name="Red")
-    '''
-    CSE233 Project: Load red agent here
-    red_agent = ...
-    '''
+    
 
     for num_steps in [30]:
         observation = env.reset()
@@ -56,13 +55,14 @@ if __name__ == "__main__":
         for i in range(MAX_EPS):
             r = []
             a = []
-            # cyborg.env.env.tracker.render()
             for j in range(num_steps):
-                action = random.randint(0, action_space - 1) # CSE233 Project: get action from red agent
+                action = red_agent.get_action(observation, action_space) 
                 observation, rew, done, info = env.step(action)
-                # result = cyborg.step(agent_name, action)
                 r.append(rew)
                 a.append((str(cyborg.get_last_action('Blue')), str(cyborg.get_last_action('Red'))))
             total_reward.append(sum(r))
             actions.append(a)
             observation = env.reset()
+
+
+            
