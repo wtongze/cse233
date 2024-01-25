@@ -32,8 +32,11 @@ if __name__ == "__main__":
     # Load scenario
     path = str(inspect.getfile(CybORG))
     path = path[:-10] + f'/Shared/Scenarios/{scenario}.yaml'
-    # TODO: Load Red agent
-    
+    '''
+    CSE233 Project: Load red agent here
+    red_agent = ...
+    '''
+
     # Load blue agent
     blue_agent = WrappedBlueAgent
     # Set up environment with blue agent running in the background and 
@@ -41,7 +44,6 @@ if __name__ == "__main__":
     cyborg = CybORG(path, 'sim', agents={'Blue': blue_agent})
     env = ChallengeWrapper2(env=cyborg, agent_name="Red")
 
-    # red_agent = TODO: load red agent
     max_episodes = 1
     max_timesteps = 1
     for i_episode in range(1, max_episodes + 1):
@@ -50,8 +52,12 @@ if __name__ == "__main__":
         action_space = env.action_space('Red')
         for t in range(max_timesteps):
             time_step += 1
-            action =  random.randint(0, action_space - 1)
+            action =  random.randint(0, action_space - 1) # CSE233 Project: get action from red agent
             state, reward, done, _ = env.step(action)
-            # TODO: implement red agent training
 
-    
+            '''
+            CSE233 Project: Implement red agent training here
+            red_agent.train(..., ..., ...)
+            '''
+
+            

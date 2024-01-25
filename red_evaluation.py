@@ -41,7 +41,10 @@ if __name__ == "__main__":
     # red agent as the main agent
     cyborg = CybORG(path, 'sim', agents={'Blue': blue_agent})
     env = ChallengeWrapper2(env=cyborg, agent_name="Red")
-    # TODO: load red agent
+    '''
+    CSE233 Project: Load red agent here
+    red_agent = ...
+    '''
 
     for num_steps in [30]:
         observation = env.reset()
@@ -55,7 +58,7 @@ if __name__ == "__main__":
             a = []
             # cyborg.env.env.tracker.render()
             for j in range(num_steps):
-                action = random.randint(0, action_space - 1) # TODO: get action from red agent
+                action = random.randint(0, action_space - 1) # CSE233 Project: get action from red agent
                 observation, rew, done, info = env.step(action)
                 # result = cyborg.step(agent_name, action)
                 r.append(rew)
