@@ -11,8 +11,9 @@ The Cyborg Simulator and pytorch
 The objective is each group gets a red agent that maximizes the reward using reinforcement learning.
 
 In the current version, the red agent produces a random action sampled from the action space. 
-```
-action = random.randint(0, action_space - 1) # CSE233 Project: get action from red agent
-```
 
-Each group should modify the ```red_train.py``` file to implement the RL-agent training. Similarly, they should modify the ```red_evaluation.py``` file to evaluate their trained agent.
+The `Agents/RedAgent.py` file implements the class that will contain the policy. 
+
+Currently, this function implements a random policy. Each group should modify the get action function to obtain an action from their red agent. Similarly, each group needs to modify the train function to implement the training function that will return the red agent policy.
+
+Additionally, each group needs to modify the red train.py to call their implemented train function. Finally, the groups can use the red evaluation.py to evaluate their agent’s policy.
