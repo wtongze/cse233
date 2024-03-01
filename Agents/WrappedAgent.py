@@ -28,6 +28,8 @@ class WrappedBlueAgent(BaseAgent):
 
     def train(self, results: Results):
         pass
+    def reset(self):
+        self.agent = MainAgent()
 
     def get_action(self, observation, action_space):
         conv_obs = self.w_env.env.env.env.observation_change(observation)
