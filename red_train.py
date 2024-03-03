@@ -45,7 +45,9 @@ if __name__ == "__main__":
         for t in range(max_time_steps):
             time_step += 1
             action = red_agent.get_action(observation, action_space)
-            observation, reward, done, _, _ = env.step(action)
+            observation, reward, done, _ = env.step(action)
+
+            print(f">>> {observation}")
 
             '''
             CSE233 Project: Here you should call red agent training function 
