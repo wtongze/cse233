@@ -1,3 +1,5 @@
-torch
+torch==2.1.0
 numpy
-ray[rllib]
+# tf-agents[reverb]
+# tf-keras
+

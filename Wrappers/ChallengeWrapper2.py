@@ -1,5 +1,6 @@
 from gym import Env
 from CybORG.Agents.Wrappers import BaseWrapper, OpenAIGymWrapper, RedTableWrapper, EnumActionWrapper
+from CybORG.Shared.Actions.Action import Action
 
 # corrected BlueTableWrapper
 from .BlueTableWrapper import BlueTableWrapper
@@ -28,7 +29,7 @@ class ChallengeWrapper2(Env, BaseWrapper):
         self.max_steps = max_steps
         self.step_counter = None
 
-    def step(self, action=None):
+    def step(self, action=None) -> (object, float, bool, dict):
         obs, reward, done, info = self.env.step(action=action)
 
         self.step_counter += 1
@@ -53,7 +54,7 @@ class ChallengeWrapper2(Env, BaseWrapper):
     def get_action_space(self, agent=None) -> dict:
         return self.env.get_action_space(self.agent_name)
 
-    def get_last_action(self, agent):
+    def get_last_action(self, agent) -> Action:
         return self.get_attr('get_last_action')(agent)
 
     def get_ip_map(self):
