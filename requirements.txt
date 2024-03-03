@@ -1,3 +1,4 @@
 -e cage-challenge-2/CybORG
 torch
 ray[rllib]==2.2.0
+gputil
