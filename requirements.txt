@@ -1,5 +1,3 @@
-torch==2.1.0
-numpy
-# tf-agents[reverb]
-# tf-keras
-
+-e cage-challenge-2/CybORG
+torch
+ray[rllib]==2.2.0
