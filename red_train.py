@@ -37,15 +37,15 @@ if __name__ == "__main__":
     env = ChallengeWrapper2(env=cyborg, agent_name="Red")
 
     max_episodes = 1
-    max_timesteps = 1
+    max_time_steps = 1
     for i_episode in range(1, max_episodes + 1):
         observation = env.reset()
         time_step = 0
         action_space = env.get_action_space('Red')
-        for t in range(max_timesteps):
+        for t in range(max_time_steps):
             time_step += 1
             action = red_agent.get_action(observation, action_space)
-            observation, reward, done, _ = env.step(action)
+            observation, reward, done, _, _ = env.step(action)
 
             '''
             CSE233 Project: Here you should call red agent training function 

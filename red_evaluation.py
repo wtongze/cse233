@@ -10,7 +10,7 @@ from Agents.WrappedAgent import WrappedBlueAgent
 from CybORG import CybORG, CYBORG_VERSION
 from Wrappers.ChallengeWrapper2 import ChallengeWrapper2
 
-MAX_EPS = 1
+MAX_EPS = 3
 agent_name = 'Red'
 random.seed(153)
 
@@ -55,3 +55,4 @@ if __name__ == "__main__":
         total_reward.append(sum(r))
         actions.append(a)
         observation = env.reset()
+    print(total_reward)
