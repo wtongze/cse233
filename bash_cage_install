@@ -1,6 +1,0 @@
-git clone https://github.com/cage-challenge/cage-challenge-2.git
-cd cage-challenge-2
-cd CybORG
-pip install -e .
-cd ..
-cd ..
