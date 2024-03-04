@@ -1,0 +1,121 @@
+(RolloutWorker pid=25992) 2024-03-03 21:58:04,179	WARNING env.py:147 -- Your env doesn't have a .spec.max_episode_steps attribute. This is fine if you have set 'horizon' in your config dictionary, or `soft_horizon`. However, if you haven't, 'horizon' will default to infinity, and your environment will not be reset.
+-33.175000000000324
+-41.33125000000038
+-37.437500000000355
+-11.003125000000287
+(RolloutWorker pid=25993) >>>{}
+2024-03-03 21:59:07,527	ERROR actor_manager.py:486 -- Ray error, taking actor 2 out of service. ray::RolloutWorker.apply() (pid=25993, ip=192.168.0.130, repr=<ray.rllib.evaluation.rollout_worker.RolloutWorker object at 0x7f5c48d3eb30>)
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/utils/actor_manager.py", line 183, in apply
+    raise e
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/utils/actor_manager.py", line 174, in apply
+    return func(self, *args, **kwargs)
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/execution/rollout_ops.py", line 86, in <lambda>
+    lambda w: w.sample(), local_worker=False, healthy_only=True
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/evaluation/rollout_worker.py", line 900, in sample
+    batches = [self.input_reader.next()]
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/evaluation/sampler.py", line 92, in next
+    batches = [self.get_data()]
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/evaluation/sampler.py", line 285, in get_data
+    item = next(self._env_runner)
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/evaluation/sampler.py", line 721, in _env_runner
+    base_env.send_actions(actions_to_send)
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/env/vector_env.py", line 396, in send_actions
+    ) = self.vector_env.vector_step(action_vector)
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/env/vector_env.py", line 309, in vector_step
+    raise e
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/env/vector_env.py", line 302, in vector_step
+    obs, r, done, info = self.envs[i].step(actions[i])
+  File "/home/wtongze/Desktop/cse233/Wrappers/GymWrapper.py", line 39, in step
+    return self.env.step(action)
+  File "/home/wtongze/Desktop/cse233/Wrappers/ChallengeWrapper2.py", line 33, in step
+    obs, reward, done, info = self.env.step(action=action)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Agents/Wrappers/OpenAIGymWrapper.py", line 27, in step
+    result = self.env.step(self.agent_name, action)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Agents/Wrappers/EnumActionWrapper.py", line 20, in step
+    return super().step(agent, action)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Agents/Wrappers/BaseWrapper.py", line 16, in step
+    result = self.env.step(agent, action)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Agents/Wrappers/BaseWrapper.py", line 16, in step
+    result = self.env.step(agent, action)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Agents/Wrappers/BaseWrapper.py", line 16, in step
+    result = self.env.step(agent, action)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/CybORG.py", line 104, in step
+    return self.environment_controller.step(agent, action, skip_valid_action_check)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Shared/EnvironmentController.py", line 131, in step
+    next_observation[agent_name] = self._filter_obs(self.execute_action(self.action[agent_name]), agent_name)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Simulator/SimulationController.py", line 41, in execute_action
+    return action.sim_execute(self.state)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Shared/Actions/AbstractActions/PrivilegeEscalate.py", line 109, in sim_execute
+    obs, target_session = self.__perform_escalate(state, sessions)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Shared/Actions/AbstractActions/PrivilegeEscalate.py", line 82, in __perform_escalate
+    sub_action = self.escalate_action_selector.get_escalate_action(
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Shared/Actions/AbstractActions/PrivilegeEscalate.py", line 47, in get_escalate_action
+    if state.sessions[agent][session].operating_system[hostname] == OperatingSystemType.WINDOWS:
+KeyError: 'User4'
+Traceback (most recent call last):
+  File "/home/wtongze/Desktop/cse233/red_train.py", line 28, in <module>
+    result = trainer.train()
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/tune/trainable/trainable.py", line 367, in train
+    raise skipped from exception_cause(skipped)
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/tune/trainable/trainable.py", line 364, in train
+    result = self.step()
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/algorithms/algorithm.py", line 749, in step
+    results, train_iter_ctx = self._run_one_training_iteration()
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/algorithms/algorithm.py", line 2623, in _run_one_training_iteration
+    results = self.training_step()
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/algorithms/ppo/ppo.py", line 318, in training_step
+    train_batch = synchronous_parallel_sample(
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/execution/rollout_ops.py", line 85, in synchronous_parallel_sample
+    sample_batches = worker_set.foreach_worker(
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/evaluation/worker_set.py", line 696, in foreach_worker
+    handle_remote_call_result_errors(remote_results, self._ignore_worker_failures)
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/evaluation/worker_set.py", line 73, in handle_remote_call_result_errors
+    raise r.get()
+ray.exceptions.RayTaskError(KeyError): ray::RolloutWorker.apply() (pid=25993, ip=192.168.0.130, repr=<ray.rllib.evaluation.rollout_worker.RolloutWorker object at 0x7f5c48d3eb30>)
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/utils/actor_manager.py", line 183, in apply
+    raise e
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/utils/actor_manager.py", line 174, in apply
+    return func(self, *args, **kwargs)
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/execution/rollout_ops.py", line 86, in <lambda>
+    lambda w: w.sample(), local_worker=False, healthy_only=True
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/evaluation/rollout_worker.py", line 900, in sample
+    batches = [self.input_reader.next()]
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/evaluation/sampler.py", line 92, in next
+    batches = [self.get_data()]
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/evaluation/sampler.py", line 285, in get_data
+    item = next(self._env_runner)
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/evaluation/sampler.py", line 721, in _env_runner
+    base_env.send_actions(actions_to_send)
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/env/vector_env.py", line 396, in send_actions
+    ) = self.vector_env.vector_step(action_vector)
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/env/vector_env.py", line 309, in vector_step
+    raise e
+  File "/home/wtongze/Desktop/cse233/.venv/lib/python3.10/site-packages/ray/rllib/env/vector_env.py", line 302, in vector_step
+    obs, r, done, info = self.envs[i].step(actions[i])
+  File "/home/wtongze/Desktop/cse233/Wrappers/GymWrapper.py", line 39, in step
+    return self.env.step(action)
+  File "/home/wtongze/Desktop/cse233/Wrappers/ChallengeWrapper2.py", line 33, in step
+    obs, reward, done, info = self.env.step(action=action)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Agents/Wrappers/OpenAIGymWrapper.py", line 27, in step
+    result = self.env.step(self.agent_name, action)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Agents/Wrappers/EnumActionWrapper.py", line 20, in step
+    return super().step(agent, action)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Agents/Wrappers/BaseWrapper.py", line 16, in step
+    result = self.env.step(agent, action)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Agents/Wrappers/BaseWrapper.py", line 16, in step
+    result = self.env.step(agent, action)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Agents/Wrappers/BaseWrapper.py", line 16, in step
+    result = self.env.step(agent, action)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/CybORG.py", line 104, in step
+    return self.environment_controller.step(agent, action, skip_valid_action_check)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Shared/EnvironmentController.py", line 131, in step
+    next_observation[agent_name] = self._filter_obs(self.execute_action(self.action[agent_name]), agent_name)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Simulator/SimulationController.py", line 41, in execute_action
+    return action.sim_execute(self.state)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Shared/Actions/AbstractActions/PrivilegeEscalate.py", line 109, in sim_execute
+    obs, target_session = self.__perform_escalate(state, sessions)
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Shared/Actions/AbstractActions/PrivilegeEscalate.py", line 82, in __perform_escalate
+    sub_action = self.escalate_action_selector.get_escalate_action(
+  File "/home/wtongze/Desktop/cse233/cage-challenge-2/CybORG/CybORG/Shared/Actions/AbstractActions/PrivilegeEscalate.py", line 47, in get_escalate_action
+    if state.sessions[agent][session].operating_system[hostname] == OperatingSystemType.WINDOWS:
+KeyError: 'User4'
