@@ -48,7 +48,7 @@ if __name__ == "__main__":
         r = []
         a = []
         for j in range(num_steps):
-            action = j % action_space
+            action = red_agent.get_action(observation, action_space)
             observation, rew, done, info = env.step(action)
             r.append(rew)
             a.append((str(cyborg.get_last_action('Blue')), str(cyborg.get_last_action('Red'))))

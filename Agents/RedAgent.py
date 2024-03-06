@@ -1,11 +1,13 @@
 from CybORG.Agents import BaseAgent
 import random
-
+import ray
+from ray.rllib.algorithms.algorithm import Policy
 
 class RedAgent(BaseAgent):
     def __init__(self) -> None:
         super().__init__()
         # CSE233 Project: you should load your red agent model here
+        self.policy = Policy.from_checkpoint('policy/6')
 
     def get_action(self, observation, action_space):
         """
@@ -13,7 +15,8 @@ class RedAgent(BaseAgent):
         observation and action space
         """
         # CSE233 Project: you should modify this line to get action from red agent
-        return random.randint(0, action_space - 1)
+        action, _, _ = self.policy.compute_single_action(observation)
+        return action
 
     def train(self):  # CSE233 Project: you should modify this line to implement red agent training
         """
