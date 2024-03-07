@@ -3,7 +3,7 @@ torch
 ray[rllib]==2.2.0
 ray[air]==2.2.0
 ray[tune]==2.2.0
-gputil
 numpy==1.23.5
 pydantic<2
 tensorboard
+tensorflow_probability
