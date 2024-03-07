@@ -1,7 +1,7 @@
-from CybORG.Agents import BaseAgent
-import random
-import ray
 from ray.rllib.algorithms.algorithm import Policy
+
+from CybORG.Agents import BaseAgent
+
 
 class RedAgent(BaseAgent):
     def __init__(self) -> None:
