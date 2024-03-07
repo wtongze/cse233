@@ -9,7 +9,7 @@ from ray.rllib.algorithms.ppo import PPOConfig
 
 from Wrappers.GymWrapper import GymWrapper
 
-MAX_STEPS = 100
+MAX_STEPS = 30
 MAX_EPS = 50
 random.seed(153)
 

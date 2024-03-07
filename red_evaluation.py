@@ -4,13 +4,14 @@
 # Modified by Prof. H. Sasahara
 import inspect
 import random
+import numpy as np
 
 from Agents.RedAgent import RedAgent
 from Agents.WrappedAgent import WrappedBlueAgent
 from CybORG import CybORG, CYBORG_VERSION
 from Wrappers.ChallengeWrapper2 import ChallengeWrapper2
 
-MAX_EPS = 3
+MAX_EPS = 100
 agent_name = 'Red'
 random.seed(153)
 
@@ -55,4 +56,7 @@ if __name__ == "__main__":
         total_reward.append(sum(r))
         actions.append(a)
         observation = env.reset()
-    print(total_reward)
+    result = np.array(total_reward)
+    print(result)
+    print()
+    print(result.mean())
