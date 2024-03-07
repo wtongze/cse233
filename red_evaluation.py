@@ -59,4 +59,4 @@ if __name__ == "__main__":
     result = np.array(total_reward)
     print(result)
     print()
-    print(result.mean())
+    print(f"mean: {result.mean():.2f} min: {result.min():.2f} mean: {result.max():.2f}")

@@ -6,8 +6,9 @@
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/cage-challenge-2/CybORG/CybORG.egg-info" />
       <excludeFolder url="file://$MODULE_DIR$/policy" />
+      <excludeFolder url="file://$MODULE_DIR$/checkpoints" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.10 (cse233)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PackageRequirementsSettings">

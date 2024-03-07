@@ -7,7 +7,7 @@ class RedAgent(BaseAgent):
     def __init__(self) -> None:
         super().__init__()
         # CSE233 Project: you should load your red agent model here
-        self.policy = Policy.from_checkpoint('policy/eval')
+        self.policy = Policy.from_checkpoint('checkpoints/best/policies/default_policy')
 
     def get_action(self, observation, action_space):
         """
