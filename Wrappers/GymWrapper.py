@@ -30,8 +30,8 @@ class GymWrapper(gym.Env):
         # red agent as the main agent
         cyborg = CybORG(path, 'sim', agents={'Blue': blue_agent})
 
-        self.env = ChallengeWrapper2(env=cyborg, agent_name="Red")
-        self.action_space = self.env.action_space
+        self.env = ChallengeWrapper2(env=cyborg, agent_name='Red')
+        self.action_space = self.env.get_action_space('Red')  # type: ignore
         self.observation_space = self.env.observation_space
 
     def reset(self):
@@ -41,7 +41,7 @@ class GymWrapper(gym.Env):
         try:
             self.observation, self.reward, self.done, self.info = self.env.step(action)
         except:
-            print("....ERROR.....!!!!")
+            print(">>> Suppressing CybORG exception")
             return self.observation, -1000.0, True, self.info
         return self.observation, self.reward, self.done, self.info
 

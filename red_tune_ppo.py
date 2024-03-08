@@ -10,7 +10,7 @@ from ray.rllib.algorithms.ppo import PPOConfig
 from Wrappers.GymWrapper import GymWrapper
 
 MAX_STEPS = 30
-MAX_EPISODES = 20_000
+MAX_EPS = 20_000
 random.seed(153)
 
 if __name__ == "__main__":
@@ -22,8 +22,10 @@ if __name__ == "__main__":
             gamma=0.995,
             lr=5e-04,
             model={
-                "fcnet_hiddens": [1024, 1024],
-                "use_lstm": True
+                "fcnet_hiddens": tune.grid_search([
+                    [256, 256],
+                    [1024, 1024]
+                ]),
             }
         )
         .framework('torch')
@@ -37,7 +39,7 @@ if __name__ == "__main__":
         "PPO",
         run_config=air.RunConfig(
             stop={
-                "episodes_total": MAX_EPISODES
+                "episodes_total": MAX_EPS
             },
             checkpoint_config=air.CheckpointConfig(
                 checkpoint_score_attribute="episode_reward_mean",
@@ -45,16 +47,13 @@ if __name__ == "__main__":
                 num_to_keep=1,
             ),
             local_dir="checkpoints/",
-            name="train"
+            name="ppo"
         ),
         param_space=config
     )
 
-    '''
-    CSE233 Project: Here you should call red agent training function
-    '''
     results = tuner.fit()
     best_result = results.get_best_result(metric="episode_reward_mean", mode="max")
     best_checkpoint = best_result.checkpoint
 
-    best_checkpoint.to_directory("checkpoints/final/")
+    best_checkpoint.to_directory("checkpoints/best_ppo/")

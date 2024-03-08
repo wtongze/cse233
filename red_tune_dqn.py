@@ -36,7 +36,8 @@ if __name__ == "__main__":
                 "episodes_total": MAX_EPS
             },
             checkpoint_config=air.CheckpointConfig(
-                checkpoint_score_attribute="max-episode_reward_mean",
+                checkpoint_score_attribute="episode_reward_mean",
+                checkpoint_score_order="max",
                 num_to_keep=1,
             ),
             local_dir="checkpoints/",
@@ -50,22 +51,3 @@ if __name__ == "__main__":
     best_checkpoint = best_result.checkpoint
 
     best_checkpoint.to_directory("checkpoints/best-dqn/")
-
-    # max_episodes = 1
-    # max_time_steps = 1
-    # for i_episode in range(1, max_episodes + 1):
-    #     observation = env.reset()
-    #
-    #     time_step = 0
-    #     action_space: int = env.get_action_space('Red')  # type: ignore
-    #
-    #     for t in range(max_time_steps):
-    #         time_step += 1
-    #         action = red_agent.get_action(observation, action_space)
-    #
-    #         observation, reward, done, info = env.step(3)
-    #
-    #         '''
-    #         CSE233 Project: Here you should call red agent training function
-    #         '''
-    #         # red_agent.train(...) # CSE233 Project: uncomment when you implement red agent training
