@@ -5,6 +5,7 @@
 import random
 
 import ray
+import numpy as np
 from ray import air, tune
 from ray.rllib.algorithms.ppo import PPOConfig
 from Wrappers.GymWrapper import GymWrapper
@@ -12,6 +13,7 @@ from Wrappers.GymWrapper import GymWrapper
 MAX_STEPS = 30
 MAX_EPISODES = 20_000
 random.seed(153)
+np.random.seed(153)
 
 if __name__ == "__main__":
     ray.init()
