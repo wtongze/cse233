@@ -56,6 +56,7 @@ if __name__ == "__main__":
         total_reward.append(sum(r))
         actions.append(a)
         observation = env.reset()
+        red_agent.reset()
     result = np.array(total_reward)
     print(result)
     print()
