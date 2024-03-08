@@ -42,7 +42,8 @@ class GymWrapper(gym.Env):
             self.observation, self.reward, self.done, self.info = self.env.step(action)
         except:
             print(">>> Suppressing CybORG exception")
-            return self.observation, -1000.0, True, self.info
+            init_obs = self.env.reset()
+            return init_obs, -100.0, True, {}
         return self.observation, self.reward, self.done, self.info
 
     def seed(self, seed=None):

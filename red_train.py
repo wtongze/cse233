@@ -12,8 +12,9 @@ from Wrappers.GymWrapper import GymWrapper
 
 MAX_STEPS = 30
 MAX_EPISODES = 20_000
-random.seed(153)
-np.random.seed(153)
+SEED=153
+random.seed(SEED)
+np.random.seed(SEED)
 
 if __name__ == "__main__":
     ray.init()
@@ -23,6 +24,7 @@ if __name__ == "__main__":
         .training(
             gamma=0.995,
             lr=5e-04,
+            train_batch_size=MAX_STEPS * 100,
             model={
                 "fcnet_hiddens": [1024, 1024],
                 "use_lstm": True
