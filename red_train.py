@@ -23,7 +23,6 @@ if __name__ == "__main__":
         PPOConfig()
         .training(
             gamma=0.995,
-            lr=5e-04,
             train_batch_size=MAX_STEPS * 100,
             model={
                 "fcnet_hiddens": [1024, 1024],
@@ -32,7 +31,7 @@ if __name__ == "__main__":
         )
         .framework('torch')
         .evaluation(evaluation_interval=None)
-        .rollouts(num_rollout_workers=10, horizon=MAX_STEPS)
+        .rollouts(num_rollout_workers=11, horizon=MAX_STEPS)
         .resources(num_gpus=1)
         .environment(env=GymWrapper)
     )
@@ -47,6 +46,7 @@ if __name__ == "__main__":
                 checkpoint_score_attribute="episode_reward_mean",
                 checkpoint_score_order="max",
                 num_to_keep=1,
+                checkpoint_frequency=1
             ),
             local_dir="checkpoints/",
             name="train"
