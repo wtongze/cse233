@@ -11,7 +11,7 @@ from Agents.WrappedAgent import WrappedBlueAgent
 from CybORG import CybORG, CYBORG_VERSION
 from Wrappers.ChallengeWrapper2 import ChallengeWrapper2
 
-MAX_EPS = 1
+MAX_EPS = 100
 agent_name = 'Red'
 random.seed(153)
 
@@ -61,3 +61,6 @@ if __name__ == "__main__":
     print(result)
     print()
     print(f"mean: {result.mean():.2f} min: {result.min():.2f} max: {result.max():.2f}")
+    print()
+    print(f"actions for best episode with reward {result[np.argmax(result)]:.2f}")
+    print(list(map(lambda a: a[1], actions[np.argmax(result)])))
