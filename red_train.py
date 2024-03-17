@@ -23,7 +23,7 @@ if __name__ == "__main__":
         PPOConfig()
         .training(
             gamma=0.995,
-            train_batch_size=MAX_STEPS * 100,
+            # train_batch_size=MAX_STEPS * 100,
             model={
                 "fcnet_hiddens": [1024, 1024],
                 "use_lstm": True
@@ -40,7 +40,8 @@ if __name__ == "__main__":
         "PPO",
         run_config=air.RunConfig(
             stop={
-                "episodes_total": MAX_EPISODES
+                # "episodes_total": MAX_EPISODES,
+                "episode_reward_mean": 28
             },
             checkpoint_config=air.CheckpointConfig(
                 checkpoint_score_attribute="episode_reward_mean",
@@ -58,7 +59,7 @@ if __name__ == "__main__":
     CSE233 Project: Here you should call red agent training function
     '''
     results = tuner.fit()
-    best_result = results.get_best_result(metric="episode_reward_mean", mode="max")
-    best_checkpoint = best_result.checkpoint
-
-    best_checkpoint.to_directory("checkpoints/final/")
+    # best_result = results.get_best_result(metric="episode_reward_mean", mode="max")
+    # best_checkpoint = best_result.checkpoint
+    #
+    # best_checkpoint.to_directory("checkpoints/final/")
