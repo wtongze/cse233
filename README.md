@@ -9,7 +9,7 @@ By Adi Shamir / Alan Turing Group
 - The `red_evaluation.py` has been modified to connect our trained agent. We also added few lines
   to print out all the awards that our agent gets and the min, max and mean award.
 - Please check out the comments in the aforementioned files.
-- The trained policy is stored under the `policy/default_policy/` folder.
+- The trained policy is stored under the `policies/default_policy/` folder.
 - We directly called our reinforcement learning framework to train the agent instead of
   implementing the `train()` method in `RedAgent.py`
 
@@ -80,7 +80,7 @@ python3 red_train.py
 
 ### Contribution
 
-Please check out our git commits for contribution details.
+Please check out the Git commits for contribution details.
 
 - `wtongze` - Tongze Wang
 - `ArberSephirotheca` - Zheyuan Chen
