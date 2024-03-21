@@ -12,6 +12,7 @@ By Adi Shamir / Alan Turing Group
 - The trained policy is stored under the `policies/default_policy/` folder.
 - We directly called our reinforcement learning framework to train the agent instead of
   implementing the `train()` method in `RedAgent.py`
+- `CybORG` is unchanged.
 
 ## Evaluation
 
