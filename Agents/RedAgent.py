@@ -21,12 +21,16 @@ class RedAgent(BaseAgent):
         # action = random.randint(0, action_space - 1)
         return action
 
-    def train(self):  # CSE233 Project: you should modify this line to implement red agent training
+    def train(self):
         """
         allows an agent to learn a policy
         """
-        # CSE233 Project: you should modify this line to implement red agent training
+        # This method is not implemented due to the use of ray / rllib framework.
+        # We will directly ask the framework to train the agent and store its policy.
+        print("Please use our red_train.py to directly train the agent.")
         raise NotImplementedError
 
     def reset(self):
+        # This method is added to reset our red agent after each episode
+        # due to our use of LSTM layer.
         self.state = self.policy.get_initial_state()

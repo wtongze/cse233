@@ -49,14 +49,22 @@ if __name__ == "__main__":
         r = []
         a = []
         for j in range(num_steps):
+            # This line is changed to connect our trained red agent.
             action = red_agent.get_action(observation, action_space)
+
             observation, rew, done, info = env.step(action)
             r.append(rew)
             a.append((str(cyborg.get_last_action('Blue')), str(cyborg.get_last_action('Red'))))
         total_reward.append(sum(r))
         actions.append(a)
         observation = env.reset()
+
+        # This line is added to reset our red agent after each episode
+        # due to our use of LSTM layer.
         red_agent.reset()
+
+    # The following lines are added to print out the reward,
+    # and calculate min, max, and mean award.
     result = np.array(total_reward)
     print(result)
     print()

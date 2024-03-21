@@ -12,7 +12,7 @@ from Wrappers.GymWrapper import GymWrapper
 
 MAX_STEPS = 30
 MAX_EPISODES = 20_000
-SEED=153
+SEED = 153
 random.seed(SEED)
 np.random.seed(SEED)
 
@@ -40,8 +40,8 @@ if __name__ == "__main__":
         "PPO",
         run_config=air.RunConfig(
             stop={
-                # "episodes_total": MAX_EPISODES,
-                "episode_reward_mean": 28
+                "episodes_total": MAX_EPISODES,
+                # "episode_reward_mean": 28
             },
             checkpoint_config=air.CheckpointConfig(
                 checkpoint_score_attribute="episode_reward_mean",

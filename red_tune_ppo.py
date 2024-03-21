@@ -45,6 +45,7 @@ if __name__ == "__main__":
                 checkpoint_score_attribute="episode_reward_mean",
                 checkpoint_score_order="max",
                 num_to_keep=1,
+                checkpoint_frequency=1
             ),
             local_dir="checkpoints/",
             name="ppo"
